@@ -1,0 +1,28 @@
+spring:
+  canal:
+    topic-prefix: example
+    destination: example
+    user: canal
+    password: canal
+    dealy-limit: 2000
+    ip: 192.16.1.61
+    topic: example
+  kafka:
+    bootstrap-servers: 172.16.1.61:9092,172.16.1.62:9092,172.16.1.63:9092
+    producer:
+      acks: 1
+      batch-size: 100
+      client-id: canal
+      retries: 3
+      linger: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: 172.16.1.61:9092,172.16.1.62:9092,172.16.1.63:9092
+      buffer-memory: 40960
+    consumer:
+      enable-auto-commit: true
+      group-id: etl
+      bootstrap-servers: 172.16.1.61:9092,172.16.1.62:9092,172.16.1.63:9092
+    template:
+      default-topic: etl_canal
+
